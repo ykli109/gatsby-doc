@@ -4,34 +4,26 @@ import _ from 'lodash';
 import moment from 'moment';
 
 export const pageQuery = graphql`
-    query($slug: String!) {
-        markdownRemark(frontmatter: { slug: { eq: $slug }}) {
+    query($pathname: String!) {
+        markdownRemark(fields: { pathname: { eq: $pathname }}) {
             html
-            frontmatter {
-                date(formatString: "YYYY-MM-DD")
-                slug
-                title
-            }
         }
     }
 `
 
 export default function DefaultTemplate({
-    data
+    data,
+    pageContext
 }: TemplateProps) {
-    const frontmatter = _.get(data, 'markdownRemark.frontmatter', { title: '未设置标题', date: moment(new Date()).format('YYYY-MM-DD') });
+    console.log(data);
     const html = _.get(data, 'markdownRemark.html', '');
+    const {title, createTime} = pageContext;
 
     return (
-        <div className="blog-post-container">
-            <div className="blog-post">
-                <h1>{frontmatter.title}</h1>
-                <h2>{frontmatter.date}</h2>
-                <div
-                    className="blog-post-content"
-                    dangerouslySetInnerHTML={{ __html: html }}
-                />
-            </div>
+        <div>
+            <h1>{title}</h1>
+            <h2>创建时间：{moment(createTime).format('YYYY-MM-DD')}</h2>
+            <div dangerouslySetInnerHTML={{ __html: html }}/>
         </div>
     )
 }

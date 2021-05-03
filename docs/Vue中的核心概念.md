@@ -1,7 +1,5 @@
 ---
-slug: "/docs/Vue中的核心概念"
-date: "2019-05-04"
-title: "Vuex中的核心概念"
+title: "Vue中的核心概念"
 ---
 本文主要归纳总结Vuex.Store实例化过程中传入对象的属性。如下面的store, getter, mutations, actions属性；
 ```javascript

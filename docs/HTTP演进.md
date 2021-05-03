@@ -1,6 +1,4 @@
 ---
-slug: "/docs/HTTP演进"
-date: "2019-05-04"
 title: "HTTP演进"
 ---
 
