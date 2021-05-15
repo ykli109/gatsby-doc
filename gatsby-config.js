@@ -10,6 +10,14 @@ module.exports = {
                 path: path.join(__dirname, 'docs')
             }
         },
-        'gatsby-transformer-remark'
+        'gatsby-transformer-remark',
+        {
+            resolve: 'gatsby-plugin-less',
+            options: {
+                cssLoaderOptions: {
+                    exportLocalsConvention: 'camelCase'
+                }
+            }
+        }
     ]
 }
